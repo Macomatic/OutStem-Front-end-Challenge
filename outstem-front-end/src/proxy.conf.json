@@ -1,0 +1,8 @@
+{
+    "/validate/*": {
+        "target": "https://coop-interview.outstem.io/",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    }
+}

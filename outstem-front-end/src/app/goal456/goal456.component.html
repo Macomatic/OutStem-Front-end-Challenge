@@ -1,0 +1,33 @@
+<br><br><div class="center">
+    <h1>Goals 4, 5, and 6</h1>
+    <div>
+        <label for="sixDigitInput">Copy paste 6-Digit MFA Token to distribute digits below:</label><br>
+        <input type="text" id="sixDigitInput" name="sixDigitInput" formControlName = "inputValue" (keypress) = "numbersOnlyInput($event)" autocomplete="new-6digitinput" (paste) = "onPaste($event)" ><br><br>
+        
+        <form [formGroup] = "individualDigitForm" (ngSubmit)="onSubmit()">
+            <label for="firstDigitInput">First Digit of MFA Token:</label><br>
+            <input type="text" id="firstDigitInput" name="firstDigitInput" formControlName = "firstDigit" (keypress) = "numbersOnlyInput($event)" autocomplete="new-6digitinput-firstdigit"><br><br>
+            <label for="firstDigitInput">Second Digit of MFA Token:</label><br>
+            <input type="text" id="secondDigitInput" name="secondDigitInput" formControlName = "secondDigit" (keypress) = "numbersOnlyInput($event)" autocomplete="new-6digitinput-seconddigit"><br><br>
+            <label for="firstDigitInput">Third Digit of MFA Token:</label><br>
+            <input type="text" id="thirdDigitInput" name="thirdDigitInput" formControlName = "thirdDigit" (keypress) = "numbersOnlyInput($event)" autocomplete="new-6digitinput-thirddigit"><br><br>
+            <label for="firstDigitInput">Fourth Digit of MFA Token:</label><br>
+            <input type="text" id="fourthDigitInput" name="fourthDigitInput" formControlName = "fourthDigit" (keypress) = "numbersOnlyInput($event)" autocomplete="new-6digitinput-fourthdigit"><br><br>
+            <label for="firstDigitInput">Fifth Digit of MFA Token:</label><br>
+            <input type="text" id="fifthDigitInput" name="fifthDigitInput" formControlName = "fifthDigit" (keypress) = "numbersOnlyInput($event)" autocomplete="new-6digitinput-fifthdigit"><br><br>
+            <label for="firstDigitInput">Sixth Digit of MFA Token:</label><br>
+            <input type="text" id="sixthDigitInput" name="sixthDigitInput" formControlName = "sixthDigit" (keypress) = "numbersOnlyInput($event)" autocomplete="new-6digitinput-sixthdigit"><br><br>
+            <button type="submit" [disabled]="!individualDigitForm.valid">Submit</button>
+        </form>
+    </div>
+
+    <div *ngIf="apiCalled">
+        <div *ngIf="!error">
+            <p>Result: {{validity}}</p>
+        </div>
+
+        <div *ngIf="error">
+            <p>Error 500: Bad MFA Token, try again later!</p>
+        </div>
+    </div>
+</div>

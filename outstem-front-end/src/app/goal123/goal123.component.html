@@ -1,0 +1,22 @@
+<br><br><div class="center">
+    <h1>Goals 1, 2, 3, and 7</h1>
+    <label for="hidemfa">Hide MFA Token</label>
+    <input type="checkbox" id="hidemfa" name="hidemfa" value="hide" (change) = "isChecked($event)"><br><br>
+    <div>
+        <form [formGroup] = "inputForm" (ngSubmit)="onSubmit()">
+            <label for="sixDigitInput">6-Digit MFA Token:</label><br>
+            <input type="text" id="sixDigitInput" name="sixDigitInput" formControlName = "inputValue" (keypress) = "numbersOnlyInput($event)" autocomplete="new-6digitinput" (paste) = "onPaste($event)" ><br><br>
+            <button type="submit" [disabled]="!inputForm.valid">Submit</button>
+        </form>
+    </div>
+
+    <div *ngIf="apiCalled">
+        <div *ngIf="!error">
+            <p>Result: {{validity}}</p>
+        </div>
+
+        <div *ngIf="error">
+            <p>Error 500: Bad MFA Token, try again later!</p>
+        </div>
+    </div>
+</div>
